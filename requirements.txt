@@ -1,0 +1,3 @@
+SQLAlchemy==2.0.0
+sqlalchemy-utils==0.38.3
+pymysql==1.0.2
