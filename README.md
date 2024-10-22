@@ -7,7 +7,7 @@ Este projeto tem como objetivo desenvolver um mapeamento objeto-relacional utili
 1. [Introdução](#introdução)  
 2. [Descrição Textual – Entidades e Atributos](#descrição-textual--entidades-e-atributos)  
 3. [Relacionamentos](#relacionamentos)  
-4. [Desenvolvimento do Projeto](#desenvolvimento-do-projeto)  
+4. [Rodando o programa](#rodando-o-programa)  
 
 ## Introdução
 
@@ -37,54 +37,18 @@ O sistema desenvolvido neste trabalho é voltado para o gerenciamento de uma loj
 - Um Cliente pode comprar no mínimo 0 discos e no máximo N discos.
 - Um disco de vinil é comprado por 1 cliente.
 
-## Desenvolvimento do Projeto
+---
 
-### 4.1 Configuração do Ambiente
+## Rodando o programa
 
 Foi utilizado um ambiente virtual Python para o isolamento das dependências do projeto:
 ```bash
-python -m venv .venv
-.venv\Scripts\activate
-```
-As bibliotecas MySQL e SQLAlchemy foram instaladas para gerenciar o banco de dados.
-
-### 4.2 Configuração do Banco de Dados
-
-A conexão com o banco de dados MySQL foi configurada no arquivo `database.py`, onde são definidos os parâmetros da conexão e o **engine** do **SQLAlchemy**. Abaixo, está o exemplo do código no arquivo `database.py`:
-
-```python
-from sqlalchemy import create_engine
-
-DATABASE_URL = "mysql+mysqlconnector://user:password@localhost:3306/vinil_store"
-engine = create_engine(DATABASE_URL)
-```
-Para criar e conectar o banco de dados no MySQL Workbench, utilizamos o seguinte comando SQL:
-```
-CREATE DATABASE vinil_store;
+python -m venv env
+env\Scripts\activate
+pip install -r .\requirements.txt
 ```
 
-### 4.3 Definição dos Modelos
-
-No diretório `models`, foram criados os seguintes arquivos, cada um representando uma entidade no sistema:
-
-- `pessoa.py`
-- `cliente.py`
-- `funcionario.py`
-- `vinil.py`
-
-Cada arquivo define uma classe com os atributos e relacionamentos das entidades.
-
-### 4.4 Criação das Tabelas
-
-Para criar as tabelas no banco de dados a partir dos modelos, foi desenvolvido o script `create_once.py`. Este script executa a criação de todas as tabelas baseadas nas definições dos modelos.
-
-### 4.5 Execução do Programa
-
-Após a configuração do ambiente e a criação das tabelas, iniciamos o programa executando o arquivo `main.py`. O arquivo `menu.py` é responsável por apresentar o menu inicial para o usuário, permitindo interagir com o sistema.
-
-O menu inclui opções para gerenciar clientes, funcionários e vinis, além de realizar operações CRUD (Create, Read, Update, Delete) em cada uma dessas entidades.
-
-### 4.6 Inserção e Verificação de Dados
+### Inserção e Verificação de Dados
 
 Após a inserção dos dados no banco de dados através do menu, é possível verificar os dados executando comandos SQL diretamente no MySQL Workbench, como o exemplo abaixo:
 
